@@ -1,6 +1,6 @@
 import axios, {AxiosInstance, AxiosError} from 'axios';
 import {API_CONFIG} from '../constants/config';
-import {getToken} from '../utils/storage';
+import {getToken} from '../shared/utils/storage';
 
 class ApiClient {
   private client: AxiosInstance;

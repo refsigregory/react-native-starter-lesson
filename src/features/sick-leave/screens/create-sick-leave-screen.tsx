@@ -10,20 +10,12 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import {Input} from '../components/input';
-import {Button} from '../components/button';
-import {useSickLeaves} from '../hooks/use-sick-leaves';
-import {SickLeave} from '../types';
-import {formatDate} from '../utils/helpers';
-
-interface CreateSickLeaveScreenProps {
-  navigation: any;
-  route?: {
-    params?: {
-      sickLeave?: SickLeave;
-    };
-  };
-}
+import {Input} from '../../../shared/components/input';
+import {Button} from '../../../shared/components/button';
+import {useSickLeaves} from '../../../hooks/use-sick-leaves';
+// import {SickLeave} from '../../../types';
+import {formatDate} from '../../../shared/utils/helpers';
+import {CreateSickLeaveScreenProps} from '../../../navigation/types';
 
 export const CreateSickLeaveScreen = ({navigation, route}: CreateSickLeaveScreenProps) => {
   const {createSickLeave, updateSickLeave} = useSickLeaves();

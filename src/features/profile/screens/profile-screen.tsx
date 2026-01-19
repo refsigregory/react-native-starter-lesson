@@ -1,11 +1,12 @@
 import React from 'react';
 import {View, Text, StyleSheet, Alert} from 'react-native';
-import {Button} from '../components/button';
-import {useAuth} from '../contexts/auth-context';
-import {getFullName} from '../utils/helpers';
-import {User} from '../types';
+import {Button} from '../../../shared/components/button';
+import {useAuth} from '../../../contexts/auth-context';
+import {getFullName} from '../../../shared/utils/helpers';
+import {User} from '../../../types';
+import {ProfileScreenProps} from '../../../navigation/types';
 
-export const ProfileScreen = () => {
+export const ProfileScreen = ({}: ProfileScreenProps) => {
   const {user, logout} = useAuth();
 
   const handleLogout = () => {

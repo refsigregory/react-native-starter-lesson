@@ -13,7 +13,7 @@ import {
   removeUserData,
   getToken,
   getUserData,
-} from '../utils/storage';
+} from '../shared/utils/storage';
 import {User, Admin, LoginCredentials, RegisterData, UserRole} from '../types';
 
 interface AuthContextType {

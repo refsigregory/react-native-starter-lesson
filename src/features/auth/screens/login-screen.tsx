@@ -8,11 +8,12 @@ import {
   Platform,
   Alert,
 } from 'react-native';
-import {Input} from '../components/input';
-import {Button} from '../components/button';
-import {useAuth} from '../contexts/auth-context';
+import {Input} from '../../../shared/components/input';
+import {Button} from '../../../shared/components/button';
+import {useAuth} from '../../../contexts/auth-context';
+import {LoginScreenProps} from '../../../navigation/types';
 
-export const LoginScreen = () => {
+export const LoginScreen = ({}: LoginScreenProps) => {
   const {login} = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

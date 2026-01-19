@@ -9,14 +9,15 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import {useSickLeaves} from '../hooks/use-sick-leaves';
-import {SickLeaveCard} from '../components/sick-leave-card';
-import {Loading} from '../components/loading';
-import {useAuth} from '../contexts/auth-context';
-import {getFullName} from '../utils/helpers';
-import {User, SickLeave} from '../types';
+import {useSickLeaves} from '../../../hooks/use-sick-leaves';
+import {SickLeaveCard} from '../../sick-leave/components/sick-leave-card';
+import {Loading} from '../../../shared/components/loading';
+import {useAuth} from '../../../contexts/auth-context';
+import {getFullName} from '../../../shared/utils/helpers';
+import {User, SickLeave} from '../../../types';
+import {HomeScreenProps} from '../../../navigation/types';
 
-export const HomeScreen = ({navigation}: any) => {
+export const HomeScreen = ({navigation}: HomeScreenProps) => {
   const {user} = useAuth();
   const {sickLeaves, loading, fetchMySickLeaves, deleteSickLeave} = useSickLeaves();
   const [refreshing, setRefreshing] = React.useState(false);

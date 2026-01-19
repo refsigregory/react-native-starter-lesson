@@ -1,7 +1,6 @@
-import React from 'react';
 import {View, Text, StyleSheet, ViewStyle, TouchableOpacity, Alert} from 'react-native';
-import {SickLeave} from '../types';
-import {formatDate, getDateDifference} from '../utils/helpers';
+import {SickLeave} from '../../../types';
+import {formatDate, getDateDifference} from '../../../shared/utils/helpers';
 
 interface SickLeaveCardProps {
   sickLeave: SickLeave;

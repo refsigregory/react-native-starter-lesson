@@ -1,53 +1,44 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import {useAuth} from '../contexts/auth-context';
-import {LoginScreen} from '../screens/login-screen';
-import {HomeScreen} from '../screens/home-screen';
-import {CreateSickLeaveScreen} from '../screens/create-sick-leave-screen';
-import {ProfileScreen} from '../screens/profile-screen';
-import {Loading} from '../components/loading';
+import {AuthNavigator} from '../features/auth/navigation/auth-navigator';
+import {HomeTabs} from '../features/home/navigation/home-tabs';
+import {CreateSickLeaveScreen} from '../features/sick-leave/screens';
+import {Loading} from '../shared/components/loading';
+import {RootStackParamList, MainStackParamList} from './types';
 
-const Stack = createNativeStackNavigator();
-const Tab = createBottomTabNavigator();
+const RootStack = createNativeStackNavigator<RootStackParamList>();
+const Stack = createNativeStackNavigator<MainStackParamList>();
 
-const HomeIcon = ({color, size}: {color: string; size: number}) => (
-  <Icon name="home" size={size} color={color} />
-);
-
-const PersonIcon = ({color, size}: {color: string; size: number}) => (
-  <Icon name="person" size={size} color={color} />
-);
-
-const HomeTabs = () => {
+const MainStack = () => {
   return (
-    <Tab.Navigator
+    <Stack.Navigator
       screenOptions={{
-        tabBarActiveTintColor: '#3498db',
-        tabBarInactiveTintColor: '#999',
-        headerShown: false,
+        headerShown: true,
+        headerStyle: {
+          backgroundColor: '#3498db',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
       }}>
-      <Tab.Screen
-        name="HomeTab"
-        component={HomeScreen}
-        options={{
-          tabBarLabel: 'Home',
-          title: 'Sick Leaves',
-          tabBarIcon: HomeIcon,
-        }}
+      <Stack.Screen
+        name="HomeTabs"
+        component={HomeTabs}
+        options={{headerShown: false}}
       />
-      <Tab.Screen
-        name="ProfileTab"
-        component={ProfileScreen}
-        options={{
-          tabBarLabel: 'Profile',
-          title: 'My Profile',
-          tabBarIcon: PersonIcon,
-        }}
+      <Stack.Screen
+        name="CreateSickLeave"
+        component={CreateSickLeaveScreen}
+        options={{title: 'New Request'}}
       />
-    </Tab.Navigator>
+      {/* Add more feature screens here that need to be accessible from any tab:
+      <Stack.Screen name="EditSickLeave" component={EditSickLeaveScreen} options={{title: 'Edit Request'}} />
+      <Stack.Screen name="SickLeaveDetail" component={SickLeaveDetailScreen} options={{title: 'Details'}} />
+      */}
+    </Stack.Navigator>
   );
 };
 
@@ -60,38 +51,13 @@ export const AppNavigator = () => {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{
-          headerShown: true,
-          headerStyle: {
-            backgroundColor: '#3498db',
-          },
-          headerTintColor: '#fff',
-          headerTitleStyle: {
-            fontWeight: 'bold',
-          },
-        }}>
+      <RootStack.Navigator screenOptions={{headerShown: false}}>
         {!isAuthenticated ? (
-          <Stack.Screen
-            name="Login"
-            component={LoginScreen}
-            options={{headerShown: false}}
-          />
+          <RootStack.Screen name="Auth" component={AuthNavigator} />
         ) : (
-          <>
-            <Stack.Screen
-              name="Main"
-              component={HomeTabs}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen
-              name="CreateSickLeave"
-              component={CreateSickLeaveScreen}
-              options={{title: 'New Request'}}
-            />
-          </>
+          <RootStack.Screen name="Main" component={MainStack} />
         )}
-      </Stack.Navigator>
+      </RootStack.Navigator>
     </NavigationContainer>
   );
 };
