@@ -10,12 +10,13 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {useSickLeaves} from '../../../hooks/use-sick-leaves';
-import {SickLeaveCard} from '../../sick-leave/components/sick-leave-card';
+import {SickLeaveCard} from '../../sick-leave/components';
 import {Loading} from '../../../shared/components/loading';
 import {useAuth} from '../../../contexts/auth-context';
 import {getFullName} from '../../../shared/utils/helpers';
 import {User, SickLeave} from '../../../types';
 import {HomeScreenProps} from '../../../navigation/types';
+import { ENDPOINTS } from '../../../constants/endpoints';
 
 export const HomeScreen = ({navigation}: HomeScreenProps) => {
   const {user} = useAuth();
@@ -23,6 +24,8 @@ export const HomeScreen = ({navigation}: HomeScreenProps) => {
   const [refreshing, setRefreshing] = React.useState(false);
 
   useEffect(() => {
+    
+    console.error('endpoint', ENDPOINTS.sickLeaves.baseUrl);
     loadSickLeaves();
   }, []);
 

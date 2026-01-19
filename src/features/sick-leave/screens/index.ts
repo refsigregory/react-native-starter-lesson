@@ -1,1 +1,1 @@
-export {CreateSickLeaveScreen} from './create-sick-leave-screen';
+export {CreateSickLeaveScreen} from './create-sick-leave';

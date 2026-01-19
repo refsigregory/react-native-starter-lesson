@@ -1,1 +1,1 @@
-export {ProfileNavigator} from './profile-navigator';
+export {ProfileNavigator} from './navigator';

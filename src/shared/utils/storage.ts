@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {STORAGE_KEYS} from '../constants/config';
-import {User, Admin} from '../types';
+import {STORAGE_KEYS} from '../../constants/config';
+import {User, Admin} from '../../types';
 
 export const saveToken = async (token: string): Promise<void> => {
   try {

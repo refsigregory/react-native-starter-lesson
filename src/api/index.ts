@@ -1,4 +1,4 @@
-export {authApi} from './auth-api';
-export {sickLeaveApi} from './sick-leave-api';
-export {employeeApi} from './employee-api';
+export {authApi} from './auth';
+export {sickLeaveApi} from './sick-leave';
+export {employeeApi} from './employee';
 export {apiClient} from './client';

@@ -1,1 +1,1 @@
-export {SickLeaveCard} from './sick-leave-card';
+export {SickLeaveCard} from './card';

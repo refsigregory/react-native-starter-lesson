@@ -1,6 +1,6 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import {HomeNavigator} from './home-navigator';
+import {HomeNavigator} from './navigator';
 import {ProfileNavigator} from '../../profile/navigation';
 import {TabParamList} from '../../../navigation/types';
 

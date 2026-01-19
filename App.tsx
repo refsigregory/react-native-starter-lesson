@@ -1,7 +1,7 @@
 import React from 'react';
 import {SafeAreaView, StyleSheet, StatusBar} from 'react-native';
 import {AuthProvider} from './src/contexts/auth-context';
-import {AppNavigator} from './src/navigation/app-navigator';
+import {AppNavigator} from './src/navigation/app';
 
 function App(): React.JSX.Element {
   return (

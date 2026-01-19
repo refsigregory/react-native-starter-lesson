@@ -1,2 +1,2 @@
-export {HomeTabs} from './home-tabs';
-export {HomeNavigator} from './home-navigator';
+export {HomeTabs} from './tabs';
+export {HomeNavigator} from './navigator';
