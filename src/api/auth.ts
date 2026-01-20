@@ -11,25 +11,25 @@ import {
 export const authApi = {
   // Register new employee
   register: async (data: RegisterData): Promise<AuthResponse> => {
-    const response = await apiClient.post(ENDPOINTS.auth.register, data);
+    const response = await apiClient.post(`${ENDPOINTS.auth.baseUrl}${ENDPOINTS.auth.register}`, data);
     return response.data;
   },
 
   // Login as employee
   loginEmployee: async (credentials: LoginCredentials): Promise<AuthResponse> => {
-    const response = await apiClient.post(ENDPOINTS.auth.loginEmployee, credentials);
+    const response = await apiClient.post(`${ENDPOINTS.auth.baseUrl}${ENDPOINTS.auth.loginEmployee}`, credentials);
     return response.data;
   },
 
   // Login as admin
   loginAdmin: async (credentials: LoginCredentials): Promise<AuthResponse> => {
-    const response = await apiClient.post(ENDPOINTS.auth.loginAdmin, credentials);
+    const response = await apiClient.post(`${ENDPOINTS.auth.baseUrl}${ENDPOINTS.auth.loginAdmin}`, credentials);
     return response.data;
   },
 
   // Get current user
   getCurrentUser: async (): Promise<ApiResponse<User>> => {
-    const response = await apiClient.get(ENDPOINTS.auth.me);
+    const response = await apiClient.get(`${ENDPOINTS.auth.baseUrl}${ENDPOINTS.auth.me}`);
     return response.data;
   },
 
@@ -38,7 +38,7 @@ export const authApi = {
     currentPassword: string;
     newPassword: string;
   }): Promise<ApiResponse<void>> => {
-    const response = await apiClient.post(ENDPOINTS.auth.changePassword, data);
+    const response = await apiClient.post(`${ENDPOINTS.auth.baseUrl}${ENDPOINTS.auth.changePassword}`, data);
     return response.data;
   },
 };

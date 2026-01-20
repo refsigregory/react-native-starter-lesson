@@ -11,7 +11,7 @@ import {
 export const sickLeaveApi = {
   // Create sick leave
   create: async (data: CreateSickLeaveData): Promise<ApiResponse<SickLeave>> => {
-    const response = await apiClient.post(ENDPOINTS.sickLeaves.create, data);
+    const response = await apiClient.post(`${ENDPOINTS.sickLeaves.baseUrl}${ENDPOINTS.sickLeaves.create}`, data);
     return response.data;
   },
 
@@ -20,7 +20,7 @@ export const sickLeaveApi = {
     page = 1,
     limit = 10,
   ): Promise<PaginatedResponse<SickLeave>> => {
-    const response = await apiClient.get(ENDPOINTS.sickLeaves.my, {
+    const response = await apiClient.get(`${ENDPOINTS.sickLeaves.baseUrl}${ENDPOINTS.sickLeaves.my}`, {
       params: {page, limit},
     });
     return response.data;
@@ -32,7 +32,7 @@ export const sickLeaveApi = {
     limit = 10,
     status?: string,
   ): Promise<PaginatedResponse<SickLeave>> => {
-    const response = await apiClient.get(ENDPOINTS.sickLeaves.list, {
+    const response = await apiClient.get(`${ENDPOINTS.sickLeaves.baseUrl}${ENDPOINTS.sickLeaves.list}`, {
       params: {page, limit, status},
     });
     return response.data;
@@ -40,7 +40,7 @@ export const sickLeaveApi = {
 
   // Get sick leave by ID
   getById: async (id: number): Promise<ApiResponse<SickLeave>> => {
-    const response = await apiClient.get(ENDPOINTS.sickLeaves.detail(id));
+    const response = await apiClient.get(`${ENDPOINTS.sickLeaves.baseUrl}${ENDPOINTS.sickLeaves.detail(id)}`);
     return response.data;
   },
 
@@ -49,13 +49,13 @@ export const sickLeaveApi = {
     id: number,
     data: Partial<CreateSickLeaveData>,
   ): Promise<ApiResponse<SickLeave>> => {
-    const response = await apiClient.put(ENDPOINTS.sickLeaves.update(id), data);
+    const response = await apiClient.put(`${ENDPOINTS.sickLeaves.baseUrl}${ENDPOINTS.sickLeaves.update(id)}`, data);
     return response.data;
   },
 
   // Delete sick leave
   delete: async (id: number): Promise<ApiResponse<void>> => {
-    const response = await apiClient.delete(ENDPOINTS.sickLeaves.delete(id));
+    const response = await apiClient.delete(`${ENDPOINTS.sickLeaves.baseUrl}${ENDPOINTS.sickLeaves.delete(id)}`);
     return response.data;
   },
 
@@ -64,7 +64,7 @@ export const sickLeaveApi = {
     id: number,
     data: ReviewSickLeaveData,
   ): Promise<ApiResponse<SickLeave>> => {
-    const response = await apiClient.patch(ENDPOINTS.sickLeaves.review(id), data);
+    const response = await apiClient.patch(`${ENDPOINTS.sickLeaves.baseUrl}${ENDPOINTS.sickLeaves.review(id)}`, data);
     return response.data;
   },
 };
